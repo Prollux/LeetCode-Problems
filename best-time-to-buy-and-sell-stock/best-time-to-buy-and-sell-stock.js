@@ -3,22 +3,17 @@
  * @return {number}
  */
 var maxProfit = function(prices) {
-    let maxProfit = 0;
-    let lowest = null;
-    prices.map((cost, index) => {
-        if (lowest === null || cost < lowest) {
-            lowest = cost;
-            for (let i = index; i < prices.length; i++) {
-                let cost = prices[i]
-                let profit = cost - lowest;
-                if (profit > maxProfit) {
-                    maxProfit = profit
-                }
-                if (cost < lowest) {
-                    break;
-                }
-            }
-         }
-    })
-    return maxProfit
+    let min = Infinity;
+    let max = 0;
+    let profit = 0;
+    
+    for (let i = 0; i < prices.length; i++) {
+        if (prices[i] < min) {
+            min = prices[i];
+        }
+        else if (prices[i] - min > profit) {
+            profit = prices[i] - min;
+        }
+    }
+    return profit;
 }
