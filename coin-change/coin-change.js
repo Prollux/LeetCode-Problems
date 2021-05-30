@@ -11,8 +11,7 @@ let coinChange = (coins, amount, memo = {}) => {
     memo[amount] = Infinity
 
     for (i in coins) {
-        let coin = coins[i]
-        let perm = coinChange(coins, amount-coin, memo)
+        let perm = coinChange(coins, amount-coins[i], memo)
         memo[amount] = Math.min(memo[amount], 1 + (perm === -1 ? Infinity: perm))
     }
 
