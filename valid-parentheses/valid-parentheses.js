@@ -8,18 +8,18 @@ var isValid = function(s) {
         '[': ']',
         '(': ')',
     }
-    let expected = []
+    let e = []
     let i = 0
     for (let i = 0; i < s.length; i++) {
         if (key[ s[i] ]) {
-            expected.push(key[ s[i] ])
+            e.push(key[ s[i] ])
         } else {
-            if (expected.slice(-1).pop() === s[i]) {
-                expected.pop()
+            if (e[e.length-1] === s[i]) {
+                e.pop()
             } else {
                 return false
             }
         }
     }
-    return (expected.length === 0)
+    return (e.length === 0)
 };
