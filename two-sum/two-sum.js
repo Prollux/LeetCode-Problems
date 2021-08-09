@@ -4,14 +4,15 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
+    const visited = {}
     for (let i = 0; i < nums.length; i++) {
-        let firstNum = nums[i];
-        for (let j = 0; j < nums.length; j++) {
-            let secondNum = nums[j];
-            if (firstNum + secondNum === target && i != j) {
-                return [i, j];
-            }
+        let current = nums[i]
+        let match = target - current
+        
+        if (visited[match] != undefined && visited[match] != i) {
+            return [i, visited[match]]
         }
+        visited[current] = i
     }
-    return null;
+    return []
 };
